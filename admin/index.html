@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frigelis Admin — Dashboard</title>
+  <link rel="icon" href="../assets/img/logo-icon.png" type="image/png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="sb-logo">
+    <img src="../assets/img/logo-icon.png" alt="F">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem;color:white;letter-spacing:.08em">FRIGELIS</div>
+      <span class="sb-logo-sub">Back-office</span>
+    </div>
+  </div>
+  <nav class="sb-nav">
+    <a class="sb-link active" href="index.html"><span class="ico">📊</span>Dashboard</a>
+    <a class="sb-link" href="services.html"><span class="ico">🔧</span>Services</a>
+    <a class="sb-link" href="avis.html"><span class="ico">⭐</span>Avis clients</a>
+    <a class="sb-link" href="messages.html"><span class="ico">✉️</span>Messages</a>
+    <a class="sb-link" href="settings.html"><span class="ico">⚙️</span>Paramètres</a>
+  </nav>
+  <div class="sb-bottom"><a href="../index.html" class="sb-back">← Retour au site</a></div>
+</aside>
+
+<main class="admin-main">
+  <div class="adm-top">
+    <div>
+      <h1>Dashboard</h1>
+      <div id="dash-date" style="color:#94a3b8;font-size:.875rem;margin-top:.2rem"></div>
+    </div>
+    <a href="../index.html" class="btn btn-outline btn-sm" style="font-size:.82rem">↗ Voir le site</a>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-tile"><div class="stat-tile-n blue" id="stat-svc">—</div><div class="stat-tile-l">Services actifs</div></div>
+    <div class="stat-tile"><div class="stat-tile-n green" id="stat-avis">—</div><div class="stat-tile-l">Avis publiés</div></div>
+    <div class="stat-tile"><div class="stat-tile-n" id="stat-msgs">—</div><div class="stat-tile-l">Messages</div></div>
+    <div class="stat-tile"><div class="stat-tile-n amber" id="stat-new">—</div><div class="stat-tile-l">Non lus</div></div>
+    <div class="stat-tile" style="cursor:pointer" onclick="location.href='../index.html#avis'">
+      <div class="stat-tile-n" style="color:#f59e0b">4.7</div><div class="stat-tile-l">Note Google ⭐</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-h">
+      <h3>Derniers messages</h3>
+      <a href="messages.html" style="font-size:.82rem;color:#2563eb;font-weight:600">Voir tout →</a>
+    </div>
+    <div class="panel-b" id="dash-msgs"><div style="color:#94a3b8">Chargement…</div></div>
+  </div>
+</main>
+
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module">
+import { checkAdminAuth } from '../js/app.js';
+import { loadDashboard } from '../js/admin.js';
+if (!checkAdminAuth()) throw new Error('auth');
+document.getElementById('dash-date').textContent = new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+loadDashboard();
+</script>
+</body>
+</html>

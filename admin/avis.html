@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frigelis Admin — Avis</title>
+  <link rel="icon" href="../assets/img/logo-icon.png" type="image/png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="sb-logo"><img src="../assets/img/logo-icon.png" alt="F"><div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem;color:white;letter-spacing:.08em">FRIGELIS</div><span class="sb-logo-sub">Back-office</span></div></div>
+  <nav class="sb-nav">
+    <a class="sb-link" href="index.html"><span class="ico">📊</span>Dashboard</a>
+    <a class="sb-link" href="services.html"><span class="ico">🔧</span>Services</a>
+    <a class="sb-link active" href="avis.html"><span class="ico">⭐</span>Avis clients</a>
+    <a class="sb-link" href="messages.html"><span class="ico">✉️</span>Messages</a>
+    <a class="sb-link" href="settings.html"><span class="ico">⚙️</span>Paramètres</a>
+  </nav>
+  <div class="sb-bottom"><a href="../index.html" class="sb-back">← Retour au site</a></div>
+</aside>
+<main class="admin-main">
+  <div class="adm-top">
+    <h1>Avis clients</h1>
+    <div style="background:#eff6ff;border:1px solid #dbeafe;border-radius:10px;padding:.75rem 1rem;font-size:.82rem;color:#2563eb;max-width:380px">
+      💡 Les avis Google sont affichés en statique sur le site. Ajoutez ici des avis pour les afficher dynamiquement.
+    </div>
+  </div>
+
+  <div class="add-form">
+    <h3>➕ Ajouter un avis</h3>
+    <div class="form-row" style="margin-bottom:1rem">
+      <div class="form-group"><label class="form-label">Nom du client *</label><input class="form-input" id="a-nom" placeholder="Marie D."></div>
+      <div class="form-group"><label class="form-label">Note (1–5) *</label><input class="form-input" id="a-note" type="number" min="1" max="5" value="5" style="width:90px"></div>
+    </div>
+    <div class="form-group" style="margin-bottom:1rem"><label class="form-label">Commentaire *</label><textarea class="form-textarea" id="a-comment" style="min-height:80px" placeholder="Intervention rapide et efficace…"></textarea></div>
+    <button class="btn btn-primary btn-sm" onclick="admAddAvis()">Ajouter l'avis</button>
+  </div>
+
+  <div class="panel">
+    <div class="panel-h"><h3>Tous les avis</h3></div>
+    <div style="overflow-x:auto">
+      <table><thead><tr><th>Client</th><th>Note</th><th>Commentaire</th><th>Statut</th><th>Actions</th></tr></thead>
+      <tbody id="avis-tbody"><tr><td colspan="5" style="text-align:center;padding:2rem;color:#94a3b8">Chargement…</td></tr></tbody></table>
+    </div>
+  </div>
+</main>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module">
+import { checkAdminAuth } from '../js/app.js';
+import { loadAdminAvis } from '../js/admin.js';
+if (!checkAdminAuth()) throw new Error('auth');
+loadAdminAvis();
+</script>
+</body>
+</html>

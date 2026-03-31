@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frigelis — Services & Tarifs</title>
+  <meta name="description" content="Tous les services Frigelis : dépannage et installation climatisation, froid commercial, pompes à chaleur. Tarifs indicatifs et devis gratuit.">
+  <link rel="icon" href="../assets/img/logo-icon.png" type="image/png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .page-hero {
+      padding:clamp(7rem,12vw,9rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem);
+      background:linear-gradient(150deg,#f0f6ff,#e8f0fe 50%,#f5f9ff);
+      border-bottom:1px solid var(--gray-200); text-align:center;
+    }
+    .svc-full-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+    .svc-full-card {
+      background:white; border:1px solid var(--gray-200); border-radius:var(--r-2xl);
+      padding:2.25rem; display:flex; gap:1.5rem; align-items:start;
+      box-shadow:var(--sh-sm); transition:all .4s var(--ease);
+    }
+    .svc-full-card:hover { transform:translateY(-4px); box-shadow:var(--sh-xl); border-color:var(--blue-bdr); }
+    .sfc-ico { width:58px; height:58px; border-radius:var(--r-lg); background:var(--blue-pale); display:flex; align-items:center; justify-content:center; font-size:1.9rem; flex-shrink:0; }
+    .sfc-name { font-size:1.5rem; font-weight:800; color:var(--navy); margin-bottom:.4rem; }
+    .sfc-desc { color:var(--muted); font-size:.9rem; line-height:1.7; margin-bottom:.9rem; }
+    .sfc-tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom:.9rem; }
+    .sfc-price { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.15rem; color:var(--blue); }
+
+    /* tarif table */
+    .tarifs-wrap { overflow-x:auto; }
+    table.tarifs { width:100%; border-collapse:collapse; background:white; border-radius:var(--r-2xl); overflow:hidden; box-shadow:var(--sh-md); }
+    .tarifs thead th { background:var(--navy); color:white; padding:1rem 1.5rem; text-align:left; font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+    .tarifs tbody td { padding:1rem 1.5rem; border-bottom:1px solid var(--gray-100); font-size:.9rem; }
+    .tarifs tbody tr:last-child td { border-bottom:none; }
+    .tarifs tbody tr:hover td { background:var(--blue-pale); }
+    .td-price { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.05rem; color:var(--blue); white-space:nowrap; }
+
+    @media(max-width:768px) { .svc-full-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>⚡ Dépannage urgent ? <a href="tel:+33600000000">06 00 00 00 00</a></span>
+  <div class="topbar-right"><span>📍 Arles &amp; PACA</span><span>🕐 Lun–Sam 8h–18h</span></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <img src="../assets/img/logo-horizontal.png" alt="Frigelis" style="height:38px" onerror="this.style.display='none'">
+  </a>
+  <ul class="nav-links">
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="../index.html#avis">Avis</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="../index.html#contact-section">Contact</a></li>
+    <li><a href="../index.html#contact-section" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+  <button class="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="sec-tag" style="justify-content:center">// Toutes nos prestations</div>
+  <h1 class="sec-h">Services <span style="color:var(--blue)">&amp; Tarifs</span></h1>
+  <p style="color:var(--muted);font-size:1.05rem;max-width:480px;margin:.75rem auto 0">Dépannage et installation sur tous types de systèmes. Devis personnalisé gratuit.</p>
+</div>
+
+<!-- ALL SERVICES -->
+<section class="section">
+  <div class="container">
+    <div class="svc-full-grid" id="svc-full-grid">
+      <div class="skel" style="height:180px"></div>
+      <div class="skel" style="height:180px"></div>
+      <div class="skel" style="height:180px"></div>
+      <div class="skel" style="height:180px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="sec-header" data-fade>
+      <div class="sec-tag">// Tarification</div>
+      <h2 class="sec-h">Grille <span style="color:var(--blue)">Tarifaire</span></h2>
+      <p class="sec-sub">Tarifs indicatifs HT. Un devis personnalisé et gratuit est établi pour chaque intervention.</p>
+    </div>
+    <div class="tarifs-wrap">
+      <table class="tarifs">
+        <thead><tr><th>Prestation</th><th>Catégorie</th><th>Tarif indicatif</th></tr></thead>
+        <tbody>
+          <tr><td>Diagnostic de panne + déplacement</td><td><span class="badge badge-blue">Climatisation</span></td><td class="td-price">65 – 90 €</td></tr>
+          <tr><td>Fourniture + pose monosplit 2.5 kW</td><td><span class="badge badge-blue">Climatisation</span></td><td class="td-price">900 – 1 400 €</td></tr>
+          <tr><td>Fourniture + pose monosplit 3.5 kW</td><td><span class="badge badge-blue">Climatisation</span></td><td class="td-price">1 100 – 1 600 €</td></tr>
+          <tr><td>Entretien annuel clim (contrat)</td><td><span class="badge badge-blue">Climatisation</span></td><td class="td-price">90 – 150 €/an</td></tr>
+          <tr><td>Dépannage froid commercial (urgence)</td><td><span class="badge badge-green">Froid Commercial</span></td><td class="td-price">120 – 280 €</td></tr>
+          <tr><td>Maintenance préventive vitrine réfrigérée</td><td><span class="badge badge-green">Froid Commercial</span></td><td class="td-price">120 – 200 €/an</td></tr>
+          <tr><td>PAC Air/Air — fourniture + pose</td><td><span class="badge badge-amber">Pompe à chaleur</span></td><td class="td-price">2 000 – 4 500 €</td></tr>
+          <tr><td>PAC Air/Eau — fourniture + pose</td><td><span class="badge badge-amber">Pompe à chaleur</span></td><td class="td-price">6 000 – 12 000 €</td></tr>
+          <tr><td>Entretien annuel PAC</td><td><span class="badge badge-amber">Pompe à chaleur</span></td><td class="td-price">150 – 250 €/an</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--gray-400);font-size:.8rem;text-align:center;margin-top:1rem">* Tarifs HT indicatifs — susceptibles de varier selon configuration, distance et matériel. Devis personnalisé gratuit sur demande.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--navy);padding:5rem clamp(1.5rem,5vw,4rem);text-align:center">
+  <h2 style="color:white;font-size:3rem;font-weight:900;margin-bottom:.75rem">Besoin d'un devis ?</h2>
+  <p style="color:rgba(255,255,255,.5);margin-bottom:2rem;font-size:1.05rem">Gratuit · Sans engagement · Réponse sous 24h</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="../index.html#contact-section" class="btn btn-white">Formulaire de contact →</a>
+    <a href="tel:+33600000000" class="btn btn-outline-white">📞 06 00 00 00 00</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="../assets/img/logo-horizontal.png" alt="Frigelis" onerror="this.style.display='none'">
+      <p>Dépannage &amp; maintenance de climatisation et systèmes frigorifiques. Arles &amp; PACA.</p>
+    </div>
+    <div class="footer-col"><h4>Services</h4><a href="services.html">Climatisation</a><a href="services.html">Froid commercial</a><a href="services.html">Pompes à chaleur</a></div>
+    <div class="footer-col"><h4>Entreprise</h4><a href="../index.html#avis">Avis clients</a><a href="faq.html">FAQ</a></div>
+    <div class="footer-col"><h4>Contact</h4><div class="contact-line"><span class="ico">📞</span><a href="tel:+33600000000">06 00 00 00 00</a></div><div class="contact-line"><span class="ico">✉️</span>contact@frigelis.fr</div></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Frigelis.</span><div style="display:flex;gap:1.5rem"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></div></div>
+</footer>
+
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module">
+import { db } from '../js/storage.js';
+import { initNavbar, initFade } from '../js/app.js';
+initNavbar(); initFade();
+
+const grid = document.getElementById('svc-full-grid');
+try {
+  const svcs = await db.getServices(true);
+  grid.innerHTML = svcs.map((s,i) => `
+    <div class="svc-full-card" style="animation:fadeUp .5s ${i*.07}s var(--ease) both">
+      <div class="sfc-ico">${s.icone||'🔧'}</div>
+      <div>
+        <div style="float:right"><span class="badge ${s.is_active?'badge-green':'badge-amber'}">${s.is_active?'Disponible':'Bientôt'}</span></div>
+        <div class="sfc-name">${s.title}</div>
+        <p class="sfc-desc">${s.description||''}</p>
+        <div class="sfc-tags">${(s.tags||[]).map(t=>`<span class="badge badge-gray" style="font-size:.62rem">${t}</span>`).join('')}</div>
+        <div class="sfc-price">${s.price||'Sur devis'}</div>
+      </div>
+    </div>
+  `).join('');
+} catch {
+  grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:3rem">Erreur de chargement.</p>';
+}
+</script>
+</body>
+</html>

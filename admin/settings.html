@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frigelis Admin — Paramètres</title>
+  <link rel="icon" href="../assets/img/logo-icon.png" type="image/png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="sb-logo"><img src="../assets/img/logo-icon.png" alt="F"><div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem;color:white;letter-spacing:.08em">FRIGELIS</div><span class="sb-logo-sub">Back-office</span></div></div>
+  <nav class="sb-nav">
+    <a class="sb-link" href="index.html"><span class="ico">📊</span>Dashboard</a>
+    <a class="sb-link" href="services.html"><span class="ico">🔧</span>Services</a>
+    <a class="sb-link" href="avis.html"><span class="ico">⭐</span>Avis clients</a>
+    <a class="sb-link" href="messages.html"><span class="ico">✉️</span>Messages</a>
+    <a class="sb-link active" href="settings.html"><span class="ico">⚙️</span>Paramètres</a>
+  </nav>
+  <div class="sb-bottom"><a href="../index.html" class="sb-back">← Retour au site</a></div>
+</aside>
+<main class="admin-main">
+  <div class="adm-top"><h1>Paramètres</h1></div>
+
+  <div class="panel" style="max-width:520px">
+    <div class="panel-h"><h3>📞 Coordonnées affichées sur le site</h3></div>
+    <div class="panel-b">
+      <div style="background:#eff6ff;border:1px solid #dbeafe;border-radius:10px;padding:.85rem 1rem;font-size:.82rem;color:#64748b;margin-bottom:1.5rem">
+        ℹ️ Ces informations s'affichent dans le footer et la section contact du site.
+      </div>
+      <div class="form-group" style="margin-bottom:1rem"><label class="form-label">Téléphone</label><input class="form-input" id="p-phone" type="tel"></div>
+      <div class="form-group" style="margin-bottom:1rem"><label class="form-label">Email</label><input class="form-input" id="p-email" type="email"></div>
+      <div class="form-group" style="margin-bottom:1.5rem"><label class="form-label">Lien page Google Maps / Avis</label><input class="form-input" id="p-google" placeholder="https://g.page/r/…"></div>
+      <button class="btn btn-primary btn-sm" onclick="saveParams()">Sauvegarder</button>
+    </div>
+  </div>
+
+  <div class="panel" style="max-width:520px">
+    <div class="panel-h"><h3>🔒 Sécurité</h3></div>
+    <div class="panel-b">
+      <p style="color:#64748b;font-size:.875rem;margin-bottom:1.25rem">Le mot de passe admin est défini dans <code style="background:#f1f5f9;padding:.1rem .4rem;border-radius:4px;font-size:.8rem">js/app.js</code> (variable <code style="background:#f1f5f9;padding:.1rem .4rem;border-radius:4px;font-size:.8rem">PASSWORD</code>).</p>
+      <button class="btn btn-outline btn-sm" onclick="sessionStorage.removeItem('frg_admin');location.href='index.html'">🚪 Se déconnecter</button>
+    </div>
+  </div>
+
+  <div class="panel" style="max-width:520px">
+    <div class="panel-h"><h3>🗄️ Supabase</h3></div>
+    <div class="panel-b">
+      <p style="color:#64748b;font-size:.875rem;margin-bottom:1rem">Projet : <code style="background:#f1f5f9;padding:.1rem .4rem;border-radius:4px">sowykjqkyzsgsvrnxjho</code></p>
+      <div id="db-status" style="display:flex;gap:.5rem;flex-wrap:wrap">
+        <span style="background:#ecfdf5;color:#10b981;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .65rem;border-radius:999px">services ✓</span>
+        <span style="background:#ecfdf5;color:#10b981;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .65rem;border-radius:999px">contacts ✓</span>
+        <span style="background:#ecfdf5;color:#10b981;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .65rem;border-radius:999px">avis ✓</span>
+      </div>
+    </div>
+  </div>
+</main>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module">
+import { checkAdminAuth, toast } from '../js/app.js';
+if (!checkAdminAuth()) throw new Error('auth');
+// Pre-fill
+document.getElementById('p-phone').value = localStorage.getItem('frg_phone')||'06 00 00 00 00';
+document.getElementById('p-email').value = localStorage.getItem('frg_email')||'contact@frigelis.fr';
+document.getElementById('p-google').value = localStorage.getItem('frg_google')||'';
+window.saveParams = () => {
+  localStorage.setItem('frg_phone', document.getElementById('p-phone').value);
+  localStorage.setItem('frg_email', document.getElementById('p-email').value);
+  localStorage.setItem('frg_google', document.getElementById('p-google').value);
+  toast('✅ Paramètres sauvegardés','success');
+};
+</script>
+</body>
+</html>
